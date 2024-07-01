@@ -3,7 +3,7 @@ import express from 'express'
 import database from '../database.json'
 const router = express.Router()
 
-router.post('/create', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
   const { text } = req.body
   let code = 200
   let message = ''
@@ -17,8 +17,8 @@ router.post('/create', async (req: Request, res: Response) => {
   res.status(code).json({ message, database })
 })
 
-router.get('/get', async (req: Request, res: Response) => {
-  const { filter } = req.params
+router.get('/', async (req: Request, res: Response) => {
+  const { filter } = req.query
   let code = 200
   switch (filter) {
     case 'all':
@@ -35,7 +35,7 @@ router.get('/get', async (req: Request, res: Response) => {
   }
 })
 
-router.patch('/update', async (req: Request, res: Response) => {
+router.patch('/', async (req: Request, res: Response) => {
   const { text } = req.body
   let code = 200
   let message = ''
@@ -58,7 +58,7 @@ router.patch('/update', async (req: Request, res: Response) => {
   res.status(code).json({ message, database })
 })
 
-router.delete('/delete', async (req: Request, res: Response) => {
+router.delete('/', async (req: Request, res: Response) => {
   const { text } = req.body
   let code = 200
   let message = ''
